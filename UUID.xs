@@ -3,17 +3,19 @@
 #include <boost/uuid/uuid_io.hpp>         // streaming operators etc.
 #include <xs/xs.h>
 
+using namespace boost::uuids;
+
 MODULE = Boost::UUID                PACKAGE = Boost::UUID
 PROTOTYPES: DISABLE
 
 std::string random_uuid(){
-    boost::uuids::uuid uuid = boost::uuids::random_generator()();
-    RETVAL =  boost::uuids::to_string(uuid);
+    auto uuid = random_generator()();
+    RETVAL =  to_string(uuid);
 }
 
 std::string nil_uuid(){
-    boost::uuids::uuid uuid = boost::uuids::nil_generator()();
-    RETVAL =  boost::uuids::to_string(uuid);
+    auto uuid = nil_generator()();
+    RETVAL =  to_string(uuid);
 }
 
 std::string string_uuid(std::string input_str ){
@@ -22,8 +24,8 @@ std::string string_uuid(std::string input_str ){
         return;
      }
 
-    boost::uuids::string_generator gen;
-    boost::uuids::uuid u1;
+    string_generator gen;
+    uuid u1;
 
     try {
         u1 = gen(input_str);
@@ -31,10 +33,10 @@ std::string string_uuid(std::string input_str ){
 
     };
 
-    RETVAL =  boost::uuids::to_string(u1);
+    RETVAL =  to_string(u1);
 }
 
 std::string name_uuid(std::string dns_name ){
-    boost::uuids::uuid uuid = boost::uuids::name_generator(boost::uuids::uuid())(dns_name);
-    RETVAL =  boost::uuids::to_string(uuid);
+    auto uuid = name_generator(boost::uuids::uuid())(dns_name);
+    RETVAL =  to_string(uuid);
 }

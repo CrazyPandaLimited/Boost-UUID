@@ -5,6 +5,6 @@ write_makefile(
     NAME     => 'Boost::UUID',
     BIN_DEPS => ['Panda::XS', 'CPP::Boost::Mini' ],
     CCFLAGS  => '-Wall -Wextra',
-    OPTIMIZE => '-g0 -O2',
+    OPTIMIZE => '-O2',
     #CC       => 'clang++',
 );
