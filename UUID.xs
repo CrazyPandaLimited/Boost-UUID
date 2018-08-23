@@ -25,7 +25,7 @@ std::string string_uuid(std::string input_str ){
      }
 
     string_generator gen;
-    uuid u1;
+    auto u1 = nil_generator()();
 
     try {
         u1 = gen(input_str);
